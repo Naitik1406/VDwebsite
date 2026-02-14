@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine? ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #ffdde1, #ee9ca7);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 30px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 32px;
+}
+
+.question {
+    margin-top: 40px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background-color: #ff4d88;
+    color: white;
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
+}
+
+#noBtn {
+    background-color: white;
+    color: #ff4d88;
+    position: absolute;
+}
+
+.message {
+    display: none;
+    margin-top: 40px;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.heart {
+    position: fixed;
+    color: #ff4d88;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Envelope */
+.envelope {
+    width: 200px;
+    height: 120px;
+    background: #ff4d88;
+    margin: 30px auto;
+    position: relative;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.envelope:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-top: 60px solid #ff80aa;
+}
+
+.note {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 400px;
+    margin: 20px auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Will You Be My Valentine? 💖</h1>
+
+    <div class="question">
+        <button id="yesBtn">Yes 💕</button>
+        <button id="noBtn">No 😅</button>
+    </div>
+
+    <div class="message" id="loveMessage">
+        <h2>Yayyy!! 🎉💖</h2>
+        <p>
+            Thank you for saying YES!  
+            You just made me the happiest person alive.  
+            I promise to always cherish you and make you smile.  
+            Love you so much ❤️
+        </p>
+
+        <div class="envelope" onclick="openNote()"></div>
+        <div class="note" id="note">
+            <h3>My Sweetheart 💌</h3>
+            <p>
+                Every moment with you feels magical.  
+                You are my favorite person, my happiness, my everything.  
+                Thank you for being mine. ❤️
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("loveMessage");
+
+yesBtn.addEventListener("click", () => {
+    message.style.display = "block";
+    createHearts();
+});
+
+noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("click", moveNoButton);
+
+function moveNoButton() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+function createHearts() {
+    for(let i=0;i<30;i++){
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.className = "heart";
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.animationDuration = (Math.random()*2+3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),4000);
+    }
+}
+
+function openNote() {
+    document.getElementById("note").style.display = "block";
+}
+</script>
+
+</body>
+</html>
